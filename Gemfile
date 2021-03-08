@@ -1,14 +1,14 @@
 source 'https://rubygems.org'
 
-ruby '>= 2.6.4', '< 3.0'
+ruby '>= 2.6.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.11.3'
+gem 'rails'
 
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails'
 # Use Uglifier as compressor for JavaScript assets
-gem 'uglifier', '>= 1.3.0'
+gem 'uglifier'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
 
@@ -36,10 +36,12 @@ group :development, :test do
   #gem 'sqlite3'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  gem 'web-console'
 
 
 end
 
 group :production do
+  gem 'pg'
+  gem 'rails_12factor'
 end
