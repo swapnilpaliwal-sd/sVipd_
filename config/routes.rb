@@ -15,8 +15,6 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :movies
-
-  get '/movies/all', to: 'movies#all'
   
   # Example resource route with options:
   #   resources :products do
