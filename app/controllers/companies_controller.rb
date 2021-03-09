@@ -48,7 +48,7 @@ class CompaniesController < ApplicationController
     @company = Company.find(params[:id])
     @company.destroy
     flash[:notice] = "Product '#{@company.name}' deleted."
-    redirect_to products_path
+    redirect_to companies_path
   end
 
   private

@@ -11,6 +11,11 @@ class ProductsController < ApplicationController
 
   def index
     @products = Product.all
+    @companies = Company.all
+    @company_for_product = Hash.new
+    @products.each do |p| {
+      @company_for_product[p.pid] = @companies.find(p.company_id)
+    }
   end
  # def initialize
     
