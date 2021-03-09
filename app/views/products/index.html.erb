@@ -1,6 +1,15 @@
 <h2>All Products</h2>
 <table class="table table-striped col-md-12" id="products">
   <thead>
+  <th>
+    <td>Product ID</td>
+    <td>Name</td>
+    <td>Description</td>
+    <td>Price</td>
+    <td>Stock Units Avail.</td>
+    <td>More Info/Edit</td>
+  </th>
+<% end %>
   </thead>
   <tbody>
     <% @products.each do |product| %>
@@ -9,6 +18,8 @@
         <td><%= product.name %></td>
         <td><%= product.description %></td>
         <td>$<%= product.price %></td>
+        <td>$<%= product.stock_count %></td>
+        <td><%= link_to "Click Here", product_path(product) %></td>
       </tr>
     <% end %>
   </tbody>
