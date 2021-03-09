@@ -5,8 +5,9 @@
     <%= label :company, :description, 'Description', :class => 'col-form-label'  %>
     <%= text_field :company, :description, :class => 'form-control' %>
     <%= label :company, :longitude, 'Longitude Coordinate', :class => 'col-form-label'  %>
-    <%= text_field :company, :price, :class => 'form-control' %>
+    <%= text_field :company, :longitude, :class => 'form-control' %>
     <%= label :company, :latitude, 'Latitude Coordinate', :class => 'col-form-label'  %>
+    <%= text_field :company, :latitude, :class => 'form-control' %>
     <br/>
     <%= submit_tag 'Add Company', :class => 'btn btn-primary' %>
     <%= link_to 'Cancel', companies_path, :class => 'btn btn-secondary' %>
