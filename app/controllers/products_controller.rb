@@ -13,8 +13,8 @@ class ProductsController < ApplicationController
     @products = Product.all
     @companies = Company.all
     @company_for_product = Hash.new
-    @products.each do |p| {
-      @company_for_product[p.pid] = @companies.find(p.company_id)
+    @products.each do { |p| 
+      @company_for_product[p.pid] = @companies.find(p.company_id).name
     }
   end
  # def initialize
