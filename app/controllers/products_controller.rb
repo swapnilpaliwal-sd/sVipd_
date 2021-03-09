@@ -6,31 +6,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @all_ratings = Movie.all_ratings
-    @title_sort = {:sort => 'title'}
-    @date_sort = {:sort => 'release_date'}
-    @ratings_to_show = []
-    
-    if params[:ratings] == nil
-      if session[:ratings_token] == nil
-        session[:ratings_token] = @all_ratings
-      end
-      @ratings_to_show = session[:ratings_token]
-      redirect_to movies_url(sort: params[:sort], ratings: session[:ratings_token].map{ |x| [x, 1] }.to_h)
-    else
-      @ratings_to_show = params[:ratings].keys
-    end
-    session[:ratings_token] = @ratings_to_show
-    
-    movies = []
-    movies = Movie.where(rating: session[:ratings_token])
-    
-    sorting_order = params[:sort]
-    if sorting_order == nil
-      sorting_order = ''
-    end
-   
-    @movies = movies.all.order(sorting_order)    
+    @products = Product.all
   end
  # def initialize
     
