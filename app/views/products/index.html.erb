@@ -18,7 +18,7 @@
         <td><%= product.description %></td>
         <td>$<%= product.price %></td>
         <td><%= product.stock_count %></td>
-        <td><%= link_to <@company_for_product[product.pid], company_path(product.company_id) %></td>
+        <td><%= link_to @company_for_product[product.pid], company_path(product.company_id) %></td>
         <td><%= link_to "Click Here", product_path(product) %></td>
       </tr>
     <% end %>
