@@ -1,14 +1,12 @@
 <!--  app/views/movies/show.html.erb -->
-<h2>Details about <em><%= @movie.title %></em></h2>
+<h2>Details about <em><%= @product.name %></em></h2>
 
 <ul id="details">
   <li>
-    Rating:
-    <%= @movie.rating %>
+    About <%= @product.name %>:
+    <%= product.description %>
   </li>
 </ul>
 
-<h3>Description:</h3>
-<p id="description">
-  <%= @movie.name %>
+  <%= @product.name %>
 </p>
