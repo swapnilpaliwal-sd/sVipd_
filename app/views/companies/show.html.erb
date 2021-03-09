@@ -14,7 +14,7 @@
   <%= link_to 'Back to company list', companies_path, :class => 'btn btn-primary col-2' %>
 </div>
 
-
+<br><br>
 <h2><%= @company.name %>'s Products</h2>
 <table class="table table-striped col-md-12" id="products">
   <thead>
@@ -40,3 +40,4 @@
   </tbody>
 </table>
 
+<%= link_to 'See all Companies products', products_path, :class => 'btn btn-primary col-2' %>
