@@ -44,6 +44,6 @@ class ProductsController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def movie_params
-    params.require(:movie).permit(:title, :rating, :description, :release_date)
+    params.require(:product).permit(:name, :description, :price, :stock)
   end
 end
