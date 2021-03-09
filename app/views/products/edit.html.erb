@@ -1,5 +1,5 @@
 <h2>Edit Existing Product</h2>
-<%= form_tag products_path, , :method => :put do %>
+<%= form_tag products_path, :method => :put do %>
   <%= label :product, :name, 'Product Name', :class => 'col-form-label' %>
   <%= text_field :product, :name, :class => 'form-control' %>
   <%= label :product, :description, 'Description', :class => 'col-form-label'  %>
