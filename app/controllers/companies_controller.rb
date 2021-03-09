@@ -17,9 +17,14 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    @company = Company.create!(company_params)
-    flash[:notice] = "#{@company.name} was successfully created."
-    redirect_to companies_path
+    begin
+      @company = Company.create!(company_params)
+      flash[:notice] = "#{@company.name} was successfully created."
+      redirect_to companies_path
+    rescue => err
+      flash[:notice] = "Error creating: #{err}"
+      redirect_to companies_path
+    end
   end
 
   def edit
@@ -27,10 +32,15 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    @company = Company.find params[:id]
-    @company.update_attributes!(company_params)
-    flash[:notice] = "#{@company.name} was successfully updated."
-    redirect_to product_path(@company)
+    begin
+      @company = Company.find params[:id]
+      @company.update_attributes!(company_params)
+      flash[:notice] = "#{@company.name} was successfully updated."
+      redirect_to company_path(@company)
+    rescue => err
+      flash[:notice] = "Error updating: #{err}"
+      redirect_to companies_path
+    end
   end
 
   def destroy
@@ -44,6 +54,6 @@ class CompaniesController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def company_params
-    params.require(:company).permit(:name, :description, :longitude, :latitude)
+    params.require(:product).permit(:name, :description, :longitude, :latitude)
   end
 end
