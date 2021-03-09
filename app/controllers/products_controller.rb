@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
     @product = Product.find(id)
     puts "Company ID #{@product.company_id}"
     @company = Company.find(@product.company_id)
+
+    @product
   end
 
   def index
