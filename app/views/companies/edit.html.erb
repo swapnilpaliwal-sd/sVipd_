@@ -1,5 +1,5 @@
 <h2>Edit Existing Company</h2>
-<%= form_tag product_path(@company), :method => :put do %>
+<%= form_tag company_path(@company), :method => :put do %>
     <%= label :company, :name, 'Comapny Name', :class => 'col-form-label' %>
     <%= text_field :company, :name, :class => 'form-control' %>
     <%= label :company, :description, 'Description', :class => 'col-form-label'  %>
@@ -9,6 +9,6 @@
     <%= label :company, :latitude, 'Latitude Coordinate', :class => 'col-form-label'  %>
     <%= text_field :company, :latitude, :class => 'form-control' %>
     <br/>
-    <%= submit_tag 'Add Company', :class => 'btn btn-primary' %>
+    <%= submit_tag 'Update Company', :class => 'btn btn-primary' %>
     <%= link_to 'Cancel', companies_path, :class => 'btn btn-secondary' %>
 <% end %>
