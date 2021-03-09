@@ -17,27 +17,20 @@ class ProductsController < ApplicationController
   end
 
   def create
-    product_info = params[:product]
-    product_info[:price] = product_info[:price].to_f
-    product_info[:stock_count] = product_info[:stock_count].to_i
-    product_info[:company_id] = product_info[:company_id].to_i
-    puts "Params!::::"
-    puts "#{product_info}"
-    
     @product = Product.create!(product_params)
     flash[:notice] = "#{@product.name} was successfully created."
     redirect_to products_path
   end
 
   def edit
-    @movie = Movie.find params[:id]
+    @product = Product.find params[:id]
   end
 
   def update
-    @movie = Movie.find params[:id]
-    @movie.update_attributes!(movie_params)
-    flash[:notice] = "#{@movie.title} was successfully updated."
-    redirect_to movie_path(@movie)
+    @product = Product.find params[:id]
+    @product.update_attributes!(product_params)
+    flash[:notice] = "#{@product.name} was successfully updated."
+    redirect_to product_path(@product)
   end
 
   def destroy
