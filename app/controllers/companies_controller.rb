@@ -17,14 +17,9 @@ class CompaniesController < ApplicationController
   end
 
   def create
-    begin
-      @company = Company.create!(company_params)
-      flash[:notice] = "#{@company.name} was successfully created."
-      redirect_to companies_path
-    rescue => err
-      flash[:notice] = "Error creating: #{err}"
-      redirect_to companies_path
-    end
+    @company = Company.create!(company_params)
+    flash[:notice] = "#{@company.name} was successfully created."
+    redirect_to companies_path
   end
 
   def edit
@@ -32,15 +27,10 @@ class CompaniesController < ApplicationController
   end
 
   def update
-    begin
-      @company = Company.find params[:id]
-      @company.update_attributes!(company_params)
-      flash[:notice] = "#{@company.name} was successfully updated."
-      redirect_to product_path(@company)
-    rescue => err
-      flash[:notice] = "Error updating: #{err}"
-      redirect_to products_path
-    end
+    @company = Company.find params[:id]
+    @company.update_attributes!(company_params)
+    flash[:notice] = "#{@company.name} was successfully updated."
+    redirect_to product_path(@company)
   end
 
   def destroy

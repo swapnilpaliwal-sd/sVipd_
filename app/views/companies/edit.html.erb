@@ -1,6 +1,6 @@
 <h2>Edit Existing Company</h2>
 <%= form_tag company_path(@company), :method => :put do %>
-    <%= label :company, :name, 'Comapny Name', :class => 'col-form-label' %>
+    <%= label :company, :name, 'Company Name', :class => 'col-form-label' %>
     <%= text_field :company, :name, :class => 'form-control' %>
     <%= label :company, :description, 'Description', :class => 'col-form-label'  %>
     <%= text_field :company, :description, :class => 'form-control' %>
