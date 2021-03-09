@@ -13,3 +13,30 @@
   <%= link_to 'Delete This Company', company_path(@company), 'data-method' => 'delete', 'data-confirm' => 'Are you sure?', :class => 'btn btn-danger col-2' %>
   <%= link_to 'Back to company list', companies_path, :class => 'btn btn-primary col-2' %>
 </div>
+
+
+<h2><%= @company.name %>'s Products</h2>
+<table class="table table-striped col-md-12" id="products">
+  <thead>
+  <th>
+    <td>Name</td>
+    <td>Description</td>
+    <td>Price</td>
+    <td>Stock Units Avail.</td>
+    <td>More Info/Edit</td>
+  </th>
+  </thead>
+  <tbody>
+    <% @products.each do |product| %>
+      <tr>
+        <td><%= product.pid %></td>
+        <td><%= product.name %></td>
+        <td><%= product.description %></td>
+        <td>$<%= product.price %></td>
+        <td><%= product.stock_count %></td>
+        <td><%= link_to "Click Here", product_path(product) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
