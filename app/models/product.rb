@@ -1,3 +1,3 @@
 class Product < ActiveRecord::Base
-set_primary_key "pid" 
+  self.primary_key = "pid"
 end
