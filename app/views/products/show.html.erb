@@ -1,11 +1,11 @@
 <!--  app/views/movies/show.html.erb -->
-<h2>Details about <em><%= @product.name %></em></h2>
+<h2>Details about <b><em><%= @product.name %></em></b></h2>
 
   About <%= @product.name %>:<br>
   <%= @product.description %><br>
   $<%= @product.price %><br>
   <%= @product.stock_count %><br><br>
-  About <%= @company.name %><br>
+  Buy this product at <b><%= @company.name %>!</b><br>
   <%= @company.description %><br>
 
 </p>
