@@ -4,7 +4,9 @@ class ProductsController < ApplicationController
     id = params[:id]
     @product = Product.find(id)
     puts "Company ID #{@product.company_id}"
-    @company = Company.find(@product.company_id)
+    company = Company.find(@product.company_id)
+    @product["company_name"] = company[:name]
+    @product["company_description"] = company[:description]
   end
 
   def index
@@ -34,10 +36,15 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find params[:id]
-    @product.update_attributes!(product_params)
-    flash[:notice] = "#{@product.name} was successfully updated."
-    redirect_to product_path(@product)
+    begin
+      @product = Product.find params[:id]
+      @product.update_attributes!(product_params)
+      flash[:notice] = "#{@product.name} was successfully updated."
+      redirect_to product_path(@product)
+    rescue => err
+      flash[:notice] = "Error updating: #{err}"
+      redirect_to products_path
+    end
   end
 
   def destroy
