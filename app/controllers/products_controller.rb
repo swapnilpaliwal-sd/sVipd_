@@ -3,6 +3,8 @@ class ProductsController < ApplicationController
   def show
     id = params[:id]
     @product = Product.find(id)
+    puts "Company ID #{@product.company_id}"
+    @company = Company.find(@product.company_id)
   end
 
   def index
@@ -17,9 +19,14 @@ class ProductsController < ApplicationController
   end
 
   def create
-    @product = Product.create!(product_params)
-    flash[:notice] = "#{@product.name} was successfully created."
-    redirect_to products_path
+    begin
+      @product = Product.create!(product_params)
+      flash[:notice] = "#{@product.name} was successfully created."
+      redirect_to products_path
+    rescue => err
+      flash[:notice] = "Error creating: #{err}"
+      redirect_to products_path
+    end
   end
 
   def edit
