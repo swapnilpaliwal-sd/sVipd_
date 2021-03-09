@@ -1,13 +1,15 @@
-<h2>Create New Movie</h2>
+<h2>Add a Product!</h2>
 
-<%= form_tag movies_path, :class => 'form' do %>
-  <%= label :movie, :title, 'Title', :class => 'col-form-label' %>
-  <%= text_field :movie, :title, :class => 'form-control' %>
-  <%= label :movie, :rating, 'Rating', :class => 'col-form-label'  %>
-  <%= select :movie, :rating, ['G','PG','PG-13','R','NC-17'], {}, {:class => 'form-control col-1'} %>
-  <%= label :movie, :release_date, 'Released On', :class => 'col-form-label'  %>
-  <%= date_select :movie, :release_date, {}, :class => 'form-control col-2 d-inline' %>
+<%= form_tag products_path, :class => 'form' do %>
+  <%= label :product, :name, 'Product Name', :class => 'col-form-label' %>
+  <%= text_field :product, :name, :class => 'form-control' %>
+  <%= label :product, :description, 'Description', :class => 'col-form-label'  %>
+  <%= text_field :product, :description, :class => 'form-control' %>
+  <%= label :product, :price, 'Price', :class => 'col-form-label'  %>
+  <%= text_field :product, :price, :class => 'form-control' %>
+  <%= label :product, :stock, 'Number of Units in Inventory', :class => 'col-form-label'  %>
+  <%= text_field :product, :stock, :class => 'form-control' %>
   <br/>
-  <%= submit_tag 'Save Changes', :class => 'btn btn-primary' %>
-  <%= link_to 'Cancel', movies_path, :class => 'btn btn-secondary' %>
+  <%= submit_tag 'Add Product', :class => 'btn btn-primary' %>
+  <%= link_to 'Cancel', products_path, :class => 'btn btn-secondary' %>
 <% end %>
