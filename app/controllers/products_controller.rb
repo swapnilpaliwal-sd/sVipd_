@@ -17,10 +17,13 @@ class ProductsController < ApplicationController
   end
 
   def create
+    product_info = params[:product]
+    product_info[:price] = product_info[:price].to_f
+    product_info[:stock_count] = product_info[:stock_count].to_i
     puts "Params!::::"
-    puts "#{params[:product]}"
+    puts "#{product_info}"
     
-    @product = Product.create!(params[:product])
+    @product = Product.create!(params[:product_info])
     flash[:notice] = "#{@product.name} was successfully created."
     redirect_to products_path
   end
