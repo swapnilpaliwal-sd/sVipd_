@@ -1,0 +1,21 @@
+<h2>All Companies</h2>
+<table class="table table-striped col-md-12" id="company">
+  <thead>
+  <th>
+    <td>Name</td>
+    <td>Description</td>
+    <td>More Info/Edit</td>
+  </th>
+  </thead>
+  <tbody>
+    <% @companies.each do |company| %>
+      <tr>
+        <td><%= company.company_id %></td>
+        <td><%= company.name %></td>
+        <td><%= company.description %></td>
+        <td><%= link_to "Click Here", company_path(product) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add new company', new_company_path, :class => 'btn btn-primary' %>
