@@ -44,6 +44,6 @@ class CompaniesController < ApplicationController
   # Making "internal" methods private is not required, but is a common practice.
   # This helps make clear which methods respond to requests, and which ones do not.
   def company_params
-    params.require(:product).permit(:name, :description, :longitude, :latitude)
+    params.require(:company).permit(:name, :description, :longitude, :latitude)
   end
 end
