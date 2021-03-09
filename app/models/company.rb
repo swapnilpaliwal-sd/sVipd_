@@ -1,3 +1,3 @@
-class Product < ActiveRecord::Base
-  self.primary_key = "pid"
+class Company < ActiveRecord::Base
+  self.primary_key = "company_id"
 end
