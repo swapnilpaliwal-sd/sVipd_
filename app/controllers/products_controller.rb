@@ -24,7 +24,7 @@ class ProductsController < ApplicationController
     puts "Params!::::"
     puts "#{product_info}"
     
-    @product = Product.create!(params[:product_info])
+    @product = Product.create!(product_info)
     flash[:notice] = "#{@product.name} was successfully created."
     redirect_to products_path
   end
