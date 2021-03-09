@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
     id = params[:id]
     @product = Product.find(id)
     puts "Company ID #{@product.company_id}"
-    company = Company.find(@product.company_id)
+    @company = Company.find(@product.company_id)
   end
 
   def index
