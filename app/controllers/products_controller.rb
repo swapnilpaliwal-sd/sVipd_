@@ -34,10 +34,10 @@ class ProductsController < ApplicationController
   end
 
   def destroy
-    @movie = Movie.find(params[:id])
-    @movie.destroy
-    flash[:notice] = "Movie '#{@movie.title}' deleted."
-    redirect_to movies_path
+    @product = Product.find(params[:id])
+    @product.destroy
+    flash[:notice] = "Product '#{@product.name}' deleted."
+    redirect_to products_path
   end
 
   private
