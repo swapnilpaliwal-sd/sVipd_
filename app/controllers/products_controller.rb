@@ -20,6 +20,7 @@ class ProductsController < ApplicationController
     product_info = params[:product]
     product_info[:price] = product_info[:price].to_f
     product_info[:stock_count] = product_info[:stock_count].to_i
+    product_info[:company_id] = product_info[:company_id].to_i
     puts "Params!::::"
     puts "#{product_info}"
     
