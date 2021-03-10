@@ -10,6 +10,7 @@ class ProductsController < ApplicationController
   end
 
   def index
+    puts "PARAMS: #{params}"
     search = params[:search]
     @products = Product.all
     if search != nil
