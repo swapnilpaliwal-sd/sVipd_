@@ -10,7 +10,11 @@ class ProductsController < ApplicationController
   end
 
   def index
+    search = params[:search]
     @products = Product.all
+    if search != nil
+      @products = Product.where("name LIKE '%#{search}%' OR description LIKE '%#{search}%' ")
+    end
     @companies = Company.all
     @company_for_product = Hash.new
     @products.each do |p| 
