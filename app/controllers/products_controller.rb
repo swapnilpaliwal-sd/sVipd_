@@ -14,7 +14,8 @@ class ProductsController < ApplicationController
     search = params[:search]
     @products = Product.all
     if search != nil
-      @products = Product.where("name LIKE '%#{search}%' OR description LIKE '%#{search}%' ").order(:price)
+      s = search["search"]
+      @products = Product.where("name LIKE '%#{s}%' OR description LIKE '%#{s}%' ").order(:price)
     end
     @companies = Company.all
     @company_for_product = Hash.new
