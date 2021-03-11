@@ -3,10 +3,7 @@ class ProductsController < ApplicationController
   def show
     id = params[:id]
     @product = Product.find(id)
-    puts "Company ID #{@product.company_id}"
     @company = Company.find(@product.company_id)
-
-    @product
   end
 
   def index
@@ -15,15 +12,6 @@ class ProductsController < ApplicationController
     if search != nil
       s = search["search"]
       @products = Product.where("name LIKE '%#{s}%' OR description LIKE '%#{s}%' ").order(:price)
-    end
-    @companies = Company.all
-    @company_for_product = Hash.new
-    @products.each do |p| 
-      puts "product: #{p.company.inspect}"
-      @company_for_product[p.pid] = @companies.find(p.company_id).name
-    end
-    @companies.each do |p| 
-      puts "Company: #{p.products.inspect}"
     end
   end
  # def initialize
