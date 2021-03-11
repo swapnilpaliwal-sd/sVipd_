@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
       @company_for_product[p.pid] = @companies.find(p.company_id).name
     end
     @companies.each do |p| 
-      puts "Company: #{p.inspect}"
+      puts "Company: #{p.products.inspect}"
     end
   end
  # def initialize
