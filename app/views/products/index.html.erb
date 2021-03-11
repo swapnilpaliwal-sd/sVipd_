@@ -14,19 +14,17 @@
     <td>Price</td>
     <td>Stock Units Avail.</td>
     <td>Company</td>
-    <td>More Info/Edit</td>
   </th>
   </thead>
   <tbody>
     <% @products.each do |product| %>
       <tr>
         <td><%= product.pid %></td>
-        <td><%= product.name %></td>
+        <td><%= link_to product.name, product_path(product.pid) %></td>
         <td><%= product.description %></td>
         <td>$<%= product.price %></td>
         <td><%= product.stock_count %></td>
         <td><%= link_to product.company.name, company_path(product.company_id) %></td>
-        <td><%= link_to "Click Here", product_path(product) %></td>
       </tr>
     <% end %>
   </tbody>
