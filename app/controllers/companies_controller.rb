@@ -8,6 +8,7 @@ class CompaniesController < ApplicationController
 
   def index
     @companies = Company.all
+    puts "Companies: #{@companies}"
   end
  # def initialize
     

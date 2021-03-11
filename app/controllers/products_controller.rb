@@ -10,7 +10,6 @@ class ProductsController < ApplicationController
   end
 
   def index
-    puts "PARAMS: #{params}"
     search = params[:search]
     @products = Product.all
     if search != nil
@@ -22,6 +21,7 @@ class ProductsController < ApplicationController
     @products.each do |p| 
       @company_for_product[p.pid] = @companies.find(p.company_id).name
     end
+    puts "Comapnies: #{companies} and products: #{products}"
   end
  # def initialize
     
