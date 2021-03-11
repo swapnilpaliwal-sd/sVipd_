@@ -6,7 +6,7 @@
   <%= @product.description %><br>
   $<%= @product.price %><br>
   <%= @product.stock_count %><br><br>
-  Buy this product at <b><%= @company.name %>!</b><br>
+  Buy this product at <b><%= link_to @company.name, company_path(@company) %>!</b><br>
   <%= @company.description %><br>
 
 </p>
