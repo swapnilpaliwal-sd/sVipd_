@@ -19,9 +19,12 @@ class ProductsController < ApplicationController
     @companies = Company.all
     @company_for_product = Hash.new
     @products.each do |p| 
+      puts "product: #{p}"
       @company_for_product[p.pid] = @companies.find(p.company_id).name
     end
-    puts "Comapnies: #{companies} and products: #{products}"
+    @companies.each do |p| 
+      puts "Company: #{p}"
+    end
   end
  # def initialize
     
