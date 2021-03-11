@@ -3,7 +3,7 @@ class CompaniesController < ApplicationController
   def show
     id = params[:id]
     @company = Company.find(id)
-    @products = Product.where("company_id = ?", @company.company_id)
+    @products = @company.products
   end
 
   def index
