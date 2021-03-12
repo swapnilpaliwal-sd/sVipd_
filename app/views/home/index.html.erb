@@ -1,0 +1,7 @@
+<%= form_tag products_path, method: :get, id: 'search' do %>
+  Search Products:
+  <%= text_field "search", :search, :class => 'form-control' %>
+  <%= submit_tag 'Search', id: 'search_submit', class: 'btn btn-primary' %>
+<% end %>
+<%= link_to 'Are you a merchant?', merchant_login_path, :class => 'btn btn-primary' %>
+

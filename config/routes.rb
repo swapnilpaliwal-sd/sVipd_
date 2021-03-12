@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'products#index'
+  root 'home#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
@@ -15,8 +15,12 @@ Rails.application.routes.draw do
   #   resources :products
 
   resources :movies
+  match '/products/merchant-index' => 'products#merchant_index', :as => "products_by_company_id", :via => "get"
   resources :products
   resources :companies
+
+  match '/merchant/login' => 'merchant#login', :as => "merchant_login", :via => "get"
+
   
   # Example resource route with options:
   #   resources :products do

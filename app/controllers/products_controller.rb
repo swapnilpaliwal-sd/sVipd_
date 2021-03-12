@@ -24,12 +24,18 @@ class ProductsController < ApplicationController
 
   def create
     begin
-      @product = Product.create!(product_params)
+      product_json = params[:product]
+      product_json[:company_id] = session[:merchant_id].to_s
+      @product = Product.create!(name: product_json[:name],
+                                 description: product_json[:description],
+                                 price: product_json[:price].to_f,
+                                 stock_count: product_json[:stock_count].to_i,
+                                 company_id: product_json[:company_id].to_i)
       flash[:notice] = "#{@product.name} was successfully created."
-      redirect_to products_path
+      redirect_to products_by_company_id_path
     rescue => err
       flash[:notice] = "Error creating: #{err}"
-      redirect_to products_path
+      redirect_to products_by_company_id_path
     end
   end
 
@@ -45,7 +51,7 @@ class ProductsController < ApplicationController
       redirect_to product_path(@product)
     rescue => err
       flash[:notice] = "Error updating: #{err}"
-      redirect_to products_path
+      redirect_to products_by_company_id_path
     end
   end
 
@@ -53,7 +59,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @product.destroy
     flash[:notice] = "Product '#{@product.name}' deleted."
-    redirect_to products_path
+    redirect_to products_by_company_id_path
+  end
+
+  def merchant_index
+    @products = Product.where(company_id: session[:merchant_id]).all
   end
 
   private

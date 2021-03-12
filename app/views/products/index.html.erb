@@ -3,7 +3,7 @@
 <%= form_tag products_path, method: :get, id: 'search' do %>
   Search Products:
   <%= text_field "search", :search, :class => 'form-control' %>
-  <%= submit_tag 'Search!', id: 'ratings_submit', class: 'btn btn-primary' %>
+  <%= submit_tag 'Search!', id: 'search_submit', class: 'btn btn-primary' %>
 <% end %>
 
 <table class="table table-striped col-md-12" id="products">
