@@ -13,7 +13,7 @@ class ProductsController < ApplicationController
       s = search["search"]
       @products = Product.where("name LIKE '%#{s}%' OR description LIKE '%#{s}%' ").order(:price)
     end
-    # a=Geokit::Geocoders::GoogleGeocoder.geocode '140 Market St, San Francisco, CA'
+    a=Geokit::Geocoders::GoogleGeocoder.geocode '140 Market St, San Francisco, CA'
     # b=Geokit::Geocoders::GoogleGeocoder.geocode '789 Geary St, San Francisco, CA'
     # puts "LOCATION: #{a.ll} and #{b.ll}" # get longitude and latitude
     # puts "DISTANCE: #{a.distance_to(b)} in miles!"
