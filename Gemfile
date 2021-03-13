@@ -40,5 +40,3 @@ group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
   gem 'rails_12factor'
 end
-
-gem "geokit", "~> 1.13"
