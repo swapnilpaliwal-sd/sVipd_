@@ -18,6 +18,8 @@ gem 'jquery-rails'
 
 gem 'themoviedb'
 
+gem 'geokit', '~> 1.13.1'
+
 # Window support
 gem 'tzinfo'
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
