@@ -14,7 +14,7 @@ class ProductsController < ApplicationController
       @products = Product.where("name LIKE '%#{s}%' OR description LIKE '%#{s}%' ").order(:price)
     end
     a=Geokit::Geocoders::GoogleGeocoder.geocode '140 Market St, San Francisco, CA'
-    puts "LOCATION"
+    puts "LOCATION:"
     puts "LOCATION: #{a}"
   end
  # def initialize
