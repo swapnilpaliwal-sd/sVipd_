@@ -5,8 +5,6 @@ class LoginController < ApplicationController
 
   def merchant_login_post
     #insert authentication here, later
-    puts "lolol"
-    puts params
 
     merchants = Company.where(name: params[:username])
     count = merchants.all.count
@@ -15,7 +13,7 @@ class LoginController < ApplicationController
       session[:merchant_id] =  merchants.first.company_id
       redirect_to merchant_index_path
     else
-      flash[:notice] = "#{params[:username]} not found"
+      redirect_to merchant_login_path
     end
 
     #session[:merchant_id] = 1

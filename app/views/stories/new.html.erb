@@ -16,24 +16,12 @@
       <div class = "content-login-div">
         <center>
           <h1 class = "action-hyper">sVipd alert</h1>
+          <%= form_tag stories_path, :class => 'form' do %>
+              <%= text_field :story, :title, :class => 'form-control', :placeholder => 'Please provide title for the story' %>
+              <%= text_field :story, :description, :class => 'form-control', :placeholder => 'Please provide description for the story' %>
+              <%= text_field :story, :url, :class => 'form-control', :placeholder => 'Please provide image url for the story' %>
 
-          <%= form_with scope: Story, url: stories_path, local: true do |f| %>
-
-            <div class = "col-7">
-              <%= f.text_field :title, class: 'form-control', placeholder: 'Please provide title for the story' %>
-            </div>
-
-            <div class = "col-7">
-              <%= f.text_field :description, class: 'form-control', placeholder: 'Please provide description for the story'  %>
-            </div>
-
-            <div class = "col-7">
-              <%= f.text_field :image, class: 'form-control', placeholder: 'Please provide image url for the story' %>
-            </div>
-
-            <div class = "login-btn-pad" style = "margin-bottom:10px;">
-              <%= f.submit :Create, class: 'btn yellow_col btn-lg section-download-button col-3'%>
-            </div>
+            <%= submit_tag 'Create', :class => 'btn yellow_col btn-lg section-download-button col-3' %>
           <% end %>
         </center>
       </div>
