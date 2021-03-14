@@ -13,6 +13,7 @@
     <td>Description</td>
     <td>Price</td>
     <td>Stock Units Avail.</td>
+    <td>Distance From You</td>
     <td>Company</td>
   </th>
   </thead>
@@ -24,6 +25,7 @@
         <td><%= product.description %></td>
         <td>$<%= product.price %></td>
         <td><%= product.stock_count %></td>
+        <td><%= @distances[product.pid] %> mi</td>
         <td><%= link_to product.company.name, company_path(product.company_id) %></td>
       </tr>
     <% end %>

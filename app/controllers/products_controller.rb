@@ -13,10 +13,20 @@ class ProductsController < ApplicationController
       s = search["search"]
       @products = Product.where("name LIKE '%#{s}%' OR description LIKE '%#{s}%' ").order(:price)
     end
-    # a=Geokit::Geocoders::GoogleGeocoder.geocode '140 Market St, San Francisco, CA'
-    # b=Geokit::Geocoders::GoogleGeocoder.geocode '789 Geary St, San Francisco, CA'
-    # puts "LOCATION: #{a.ll} and #{b.ll}" # get longitude and latitude
-    # puts "DISTANCE: #{a.distance_to(b)} in miles!"
+    @distances = get_distances(@products)
+  end
+
+  def get_distances(products)
+    comp_dist = Company.company_to_user_by_distance(5)
+    prod_to_dist = Hash.new
+    @products.each do |p|
+      if comp_dist[p.company.company_id].nil? == false
+        prod_to_dist[p.pid] = comp_dist[p.company.company_id].round(2)
+      else
+        prod_to_dist[p.pid] = "Unknown"
+      end
+    end
+    prod_to_dist
   end
  # def initialize
     
