@@ -3,17 +3,20 @@
     <div class = "pad-bottom">
       <nav class="navbar navbar-expand navbar-dark">
         <div class="container-fluid">
-          <%= link_to 'sVipd', root_path, :class => 'navbar-brand' %>
+          <a class="navbar-brand" href="#">sVipd</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <%= link_to 'Merchant', merchant_login_path, :class => 'nav-link active' %>
+                <%= link_to 'Home', merchant_index_path, :class => 'nav-link active' %>
               </li>
               <li class="nav-item">
-                <a class="nav-link active">Login</a>
+                <%= link_to 'Stories', merchant_stories_path, :class => 'nav-link active' %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Products', products_by_company_id_path, :class => 'nav-link active' %>
               </li>
             </ul>
           </div>

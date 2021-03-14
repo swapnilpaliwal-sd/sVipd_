@@ -12,7 +12,7 @@
           <div class="justify-center" style = "width:113px;">
 
             <div class = "image" style = "padding: 10px;">
-              <img style = "width:60px; background-color:#fff; border-radius: 150px; border: 0.1px solid #F2C94C;" class="img-merchant" src="<%= story.merchant %>" alt="Merchant CTown">
+              <img style = "width:60px; background-color:#fff; border-radius: 150px; border: 0.1px solid #F2C94C;" class="img-merchant" src="<%= story.company.image_url %>" alt="Merchant CTown">
             </div>
             <div id ="img-rotate<%= story.id %>" class = "img-rotate">
 
@@ -27,8 +27,8 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               <div class="modal-body">
                 <div>
-                  <img style = "width:100px; background-color:#fff; border-radius: 150px; border: 1px solid black; display: inline-block;" class="img-merchant" src="<%= story.merchant %>" alt="">
-                  <h5 class="modal-title" id="ModalLabel" style = "display: inline-block;color:black;"> <%= story.product_title %></h5>
+                  <img style = "width:100px; background-color:#fff; border-radius: 150px; border: 1px solid black; display: inline-block;" class="img-merchant" src="<%= story.company.image_url %>" alt="">
+                  <h5 class="modal-title" id="ModalLabel" style = "display: inline-block;color:black;"> <%= story.company.name %></h5>
                   <br />
                   <div style = "display:inline-block;padding-left:20px;">
                     <div style = "">
@@ -44,7 +44,7 @@
                 </div>
 
                 <div style = "padding-left:20px;">
-                  <h5 style = "color:black;"><%= story.product_title %></h5>
+                  <h5 style = "color:black;"><%= story.title %></h5>
                   <p class ="decs">
                     <%= story.description %>
                   </p>
