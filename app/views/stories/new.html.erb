@@ -1,34 +1,42 @@
-<h1>Create a new data</h1>
-<%= form_with scope: Story, url: stories_path, local: true do |f| %>
+<%= javascript_include_tag "application" %>
+<%= stylesheet_link_tag "application" %>
 
-<p>
-  <%= f.label :Name_of_merchant %>
-  <%= f.text_field :title %>
-</p>
+<%= render "common/header_merchant" %>
 
-<p>
-  <%= f.label :Image_url %>
-  <%= f.text_field :merchant %>
-</p>
+<section id = "Login" style = "margin-bottom: 50px;">
+  <div class = "container-fluid">
+    <div class = "row pad-action pad-left-more">
+      <h1>Create a story</h1>
+    </div>
+  </div>
+  </div>
+</section>
+  <section style = "padding:120px; width: 990px;margin-left: 250px;">
+    <div class = "login-div" >
+      <div class = "content-login-div">
+        <center>
+          <h1 class = "action-hyper">sVipd alert</h1>
 
-<p>
-  <%= f.label :Product_title %>
-  <%= f.text_field :product_title %>
-</p>
+          <%= form_with scope: Story, url: stories_path, local: true do |f| %>
 
-<p>
-  <%= f.label :Product_Image %>
-  <%= f.text_field :image %>
-</p>
+            <div class = "col-7">
+              <%= f.text_field :title, class: 'form-control', placeholder: 'Please provide title for the story' %>
+            </div>
 
-<p>
-  <%= f.label :Description %>
-  <%= f.text_field :desc %>
-</p>
+            <div class = "col-7">
+              <%= f.text_field :description, class: 'form-control', placeholder: 'Please provide description for the story'  %>
+            </div>
 
-<p>
-  <%= f.submit :Save%>
-</p>
+            <div class = "col-7">
+              <%= f.text_field :image, class: 'form-control', placeholder: 'Please provide image url for the story' %>
+            </div>
 
+            <div class = "login-btn-pad" style = "margin-bottom:10px;">
+              <%= f.submit :Create, class: 'btn yellow_col btn-lg section-download-button col-3'%>
+            </div>
+          <% end %>
+        </center>
+      </div>
+    </div>
+  </section>
 
-<% end %>

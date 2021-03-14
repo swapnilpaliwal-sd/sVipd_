@@ -1,13 +1,10 @@
 class MerchantController < ApplicationController
 
-  def login
-    #if already logged in
-    #skip right onto products view
-    # else render merchant login
-    #
-    # hard coding right now
+  def index
+  end
 
-    session[:merchant_id] = 1
-    redirect_to products_by_company_id_path
+  def stories
+    @stories = Story.where(company_id: session[:merchant_id]).all
+    @company = Company.find(session[:merchant_id])
   end
 end

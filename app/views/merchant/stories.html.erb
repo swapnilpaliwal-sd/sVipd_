@@ -1,0 +1,18 @@
+<%= javascript_include_tag "application" %>
+<%= stylesheet_link_tag "application" %>
+
+<%= render "common/header_merchant" %>
+
+<table class="table table-striped col-md-12" id="products">
+  <thead>
+  <td>Title</td>
+  </thead>
+  <tbody>
+  <% @stories.each do |story| %>
+    <tr>
+      <td><%= link_to story.title, story_path(story.id) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= link_to 'Add new Story', new_story_path, :class => 'btn btn-primary' %>
