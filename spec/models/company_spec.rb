@@ -1,13 +1,18 @@
 require 'spec_helper'
 
 RSpec.describe Company, :type => :model do
-    subject { described_class.new } # creates an ActiveRecord for Company with all nil fields
+
+
     describe 'location' do
-        it "takes a user id and returns distance to merchants" do
-            distances = Company.company_to_user_by_distance(5)
+        it "returns a hash of distances to all merchants from current user" do
+            distances = Company.company_to_current_user_by_distance()
             expect(distances).to be_an_instance_of(Hash)
         end
     end
+
+
+
+    subject { described_class.new } # creates an ActiveRecord for Company with all nil fields
     it "is valid with valid attributes" do
         subject.name = "test"
         subject.description = "test description goes here"

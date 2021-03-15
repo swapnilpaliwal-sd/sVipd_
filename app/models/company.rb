@@ -5,7 +5,7 @@ class Company < ActiveRecord::Base
   validates :description, presence: true
   self.primary_key = "company_id"
   
-  def self.company_to_user_by_distance(user_id)
+  def self.company_to_current_user_by_distance()
     # Add the following to the user load:
     # geocoded_by :ip_address,
     # :latitude => :lat, :longitude => :lon

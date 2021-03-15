@@ -8,8 +8,6 @@
   <%= text_field :product, :price, :class => 'form-control' %>
   <%= label :product, :stock_count, 'Number of Units in Inventory', :class => 'col-form-label'  %>
   <%= text_field :product, :stock_count, :class => 'form-control' %>
-  <%= label :product, :company_id, 'Company Id'  %>
-  <%= text_field :product, :company_id, :class => 'form-control' %>
   <br/>
   <%= submit_tag 'Update Product', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', products_by_company_id_path, :class => 'btn btn-secondary' %>
