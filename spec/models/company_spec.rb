@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Company, :type => :model do
+    subject { described_class.new }
     describe 'location' do
         it "takes a user id and returns distance to merchants" do
             distances = Company.company_to_user_by_distance(5)
@@ -8,12 +9,17 @@ RSpec.describe Company, :type => :model do
         end
     end
     it "is valid with valid attributes" do
-        expect(Company.new).to be_valid
+        subject.name = "test"
+        subject.description = "test description goes here"
+        expect(subject).to be_valid
     end
     it "is not valid without a name" do
-        auction = Company.new(name: nil)
-        expect(auction).to_not be_valid
-      end
-    it "is not valid without a description"
+        subject.description = "test description goes here"
+        expect(subject).to_not be_valid
+    end
+    it "is not valid without a description" do
+        subject.name = "test"
+        expect(subject).to_not be_valid
+    end
 end
  

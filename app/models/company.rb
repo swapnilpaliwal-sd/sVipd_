@@ -1,6 +1,8 @@
 class Company < ActiveRecord::Base
   has_many :products, dependent: :nullify
   has_many :stories, dependent: :nullify
+  validates :name, presence: true
+  validates :description, presence: true
   self.primary_key = "company_id"
   
   def self.company_to_user_by_distance(user_id)
