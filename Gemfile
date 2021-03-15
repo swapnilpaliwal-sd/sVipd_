@@ -42,3 +42,9 @@ group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
   gem 'rails_12factor'
 end
+
+gem "simplecov", "~> 0.21.2"
+
+gem "factory_girl", "~> 4.9"
+
+gem "factory_girl_rails", "~> 4.9"
