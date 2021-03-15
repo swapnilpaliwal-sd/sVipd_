@@ -20,3 +20,5 @@ log
 Gemfile.lock
 Gemfile
 .idea
+
+coverage/*
