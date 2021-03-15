@@ -14,6 +14,21 @@ class ProductsController < ApplicationController
       @products = Product.where("name LIKE '%#{s}%' OR description LIKE '%#{s}%' ").order(:price)
     end
     @distances = Product.get_all_distances(@products)
+    @product_list = []
+    four_products = []
+    counter = 0
+    @products.each do |product|
+      counter = counter % 4
+      four_products.push(product)
+      if counter == 3
+        @product_list.push(four_products)
+        four_products = []
+      end
+      counter += 1
+    end
+    unless four_products.empty?
+      @product_list.push(four_products)
+    end
   end
 
  # def initialize

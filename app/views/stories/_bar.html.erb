@@ -1,3 +1,17 @@
+<script>
+    $(document).ready(function() {
+        <% @stories.each do |story| %>
+        $("#myBtn<%= story.id %>").click(function() {
+            $("#img-rotate<%= story.id %>").removeClass("img-rotate");
+            $("#img-rotate<%= story.id %>").addClass("img-rotate_a");
+            setTimeout(function() {
+                $('#Modal<%= story.id %>').modal('hide');
+                $(".modal-backdrop").removeClass("modal-backdrop");
+            }, 4030);
+        });
+        <% end %>
+    });
+</script>
 <section id = "Story_section">
 
   <div class = "container-fluid">

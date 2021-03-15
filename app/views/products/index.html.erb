@@ -1,35 +1,264 @@
-<h2>Products</h2>
+<%= javascript_include_tag "application" %>
+<%= stylesheet_link_tag "application" %>
 
-<%= form_tag products_path, method: :get, id: 'search' do %>
-  Search Products:
-  <%= text_field "search", :search, :class => 'form-control' %>
-  <%= submit_tag 'Search!', id: 'search_submit', class: 'btn btn-primary' %>
+
+<style>
+    .pad-left{
+        padding: 1% 5%;
+    }
+    .navbar-brand{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+    }
+    .nav-link{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+        font-size:18px;
+    }
+    .navbar-brand{
+        font-family: 'Montserrat', sans-serif;
+        font-weight: bold;
+    }
+    .nav-item {
+        padding: 0 18px;
+    }
+
+    #slide-container {
+        position: relative;
+        max-width: 100%;
+    }
+
+    #slide-first-element {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    #slide-element-2 {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+    }
+
+    .slide-image {
+        width: 52%;
+        display: inline-block;
+    }
+
+    #slide-first-element {
+        animation: fade-1 10s infinite;
+        -webkit-animation: fade-1 10s infinite;
+    }
+    #slide-element-2 {
+        animation: fade-2 10s infinite;
+        -webkit-animation: fade-2 10s infinite;
+    }
+
+    @keyframes fade-1 {
+        0% { opacity: 1; }
+        33% { opacity: 0; }
+        66% { opacity: 0; }
+        75% {opacity: 1;}
+        95% {opacity: 1;}
+        100% { opacity: 1; }
+    }
+    @keyframes fade-2 {
+        0% { opacity: 0; }
+        33% { opacity: 1; }
+        66% { opacity: 1; }
+        100% { opacity: 0; }
+    }
+
+    .pad-left-more{
+        padding: 2% 6%;
+    }
+    .pad-action {
+        padding-top: 50px;
+    }
+    .pad-left{
+        padding: 1% 6%;
+    }
+
+    .action-hyper{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 57px;
+        font-weight: bold;
+        line-height: 1.5;
+    }
+    .login-div {
+        padding: 6px;
+        background-color: #E5E5E5;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        line-height: 1.5;
+
+    }
+
+    .content-login-div {
+        padding: 5px;
+        background-color: #F5F2F2;
+        border-radius: 10px;
+    }
+    .form-control {
+        padding: 15px;
+        border-radius: 10px;
+    }
+
+    .password-reset {
+        color: #409CD0;
+        text-decoration: none;
+    }
+
+    .password-reset:hover {
+
+        color: #409CD0;
+        text-decoration: none;
+        border: none;
+
+    }
+
+    .col-7{
+        display: block;
+        padding-bottom: 10px;
+    }
+    .white-lm {
+        font-family: 'Montserrat', sans-serif;font-weight: lighter;
+    }
+
+    .login-btn-pad {
+        margin-left: 30px;
+    }
+
+    .form-control:focus {
+        border-color: inherit;
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    .pad-top-login-box{
+        padding-top:17%;
+    }
+
+    .yellow_col{
+        background-color: #F2C94C;
+        border-radius: 10px;
+        padding: 15px;
+    }
+
+    .yellow_col:hover {
+        background-color: black;
+        color: white;
+        transition: all .2s;
+    }
+    #footr{
+        background-color:black;
+    }
+
+    .link-secondary, li{
+        font-family: 'Montserrat', sans-serif;
+        font-size: 15px;
+        line-height: 1.5;
+        color: white;
+        text-decoration: none;
+    }
+
+    body {
+        overflow-x: hidden;
+    }
+
+    h5{ color:white; }
+</style>
+
+
+
+
+<%= render "common/header" %>
+
+
+<section id = "search_result">
+
+  <div class = "container-fluid">
+    <div class = "row">
+      <div class = "pad-action pad-left">
+        <h1><b>Search Result</b></h1>
+
+
+
+        <div class = "col-12 pad-action" style = "padding-bottom:0px;margin-bottom:0px;">
+          <div class = "col-12" style = "background-color:#F2C94C; height:80px;">
+
+          </div>
+        </div>
+
+
+        <%if @product_list.length == 0 %>
+          <div class = "pad-action pad-left">
+            <h1>Oops, we are unable to find the product you've been looking for.</h1>
+            <br />
+
+          </div>
+          <img src = "https://i.ibb.co/BNxQDLD/undraw-page-not-found-su7k.png" alt = "no_result"/>
+
+        <% end %>
+
+        <% @product_list.each do |four_products| %>
+          <div class = "row" style = "margin-left:10px;">
+          <% four_products.each do |product| %>
+            <div class = "col-3 pad-action">
+              <div class="card" style="width: 18rem">
+                <img src="<%= product.image_url %>" class="card-img-top" alt="...">
+                <div class="card-body">
+                  <h5 class="card-title" style = "color:black;"> <%= product.name %></h5>
+                  <p class="card-text" style = "text-align: justify;"><%= product.description %></p>
+                  <p class="card-text h5" style = "text-align: justify;">$<%= product.price %></p>
+                  <p class="card-text h6" style = "text-align: justify;"><%= @distances[product.pid] %> mi away</p>
+                </div>
+                <div class = "body" style = "float:right;">
+                  <%= link_to product.company.name, company_path(product.company_id), class: 'btn', style: 'background-color:black;color:#F2C94C;' %>
+
+                </div>
+              </div>
+            </div>
+          <% end %>
+          </div>
+        <% end %>
+
+        <div class = "col-12 pad-action">
+          <div class = "col-12" style = "background-color:#F2C94C; height:80px;"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<%= form_tag products_path, method: :get, id: 'search', :class => 'form' do %>
+  <%= render "products/search" %>
 <% end %>
 
-<table class="table table-striped col-md-12" id="products">
-  <thead>
-  <th>
-    <td>Name</td>
-    <td>Description</td>
-    <td>Price</td>
-    <td>Stock Units Avail.</td>
-    <td>Distance From You</td>
-    <td>Company</td>
-  </th>
-  </thead>
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.pid %></td>
-        <td><%= link_to product.name, product_path(product.pid) %></td>
-        <td><%= product.description %></td>
-        <td>$<%= product.price %></td>
-        <td><%= product.stock_count %></td>
-        <td><%= @distances[product.pid] %> mi</td>
-        <td><%= link_to product.company.name, company_path(product.company_id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<%= link_to 'Add new product', new_product_path, :class => 'btn btn-primary' %>
-<%= link_to 'See all Companies', companies_path, :class => 'btn btn-primary' %>
+<section id ="user-product-srch" style = "margin-bottom:30px;">
+  <div class = "container-fluid">
+    <div class = "row">
+
+      <div class = "pad-action pad-left" style = "">
+        <h1><b>Sign up</b></h1>
+      </div>
+
+      <div class = "col-12 pad-action pad-left" style = "display:inline-block; margin-left:30px;">
+        <img src = "https://i.ibb.co/Zxj9Jvd/Picture2.png"  style = "width: 1200px;object-fit: fill;"/>
+      </div>
+    </div>
+  </div>
+</section>
+<br />
+
+<%= render "common/footer" %>
