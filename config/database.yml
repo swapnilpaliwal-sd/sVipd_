@@ -22,7 +22,7 @@ development:
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
-test:
+test: &test
   <<: *default
   database: db/test.sqlite3
 
@@ -35,3 +35,8 @@ production:
   port: 5432
   username: aiqdeqquisnaij
   password: 2c9e808a193032f0811fd6a77b791305601d5a17949818a920d21de506e6367c
+
+cucumber:
+  <<: *test
+cucumber:
+  <<: *test
