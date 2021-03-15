@@ -30,21 +30,27 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'guard-rspec'
-
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.11'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
+  
 end
+
+gem 'web-console', '~> 2.0', group: :development
 
 group :production do
   gem 'pg', '~> 0.21' # for Heroku deployment
   gem 'rails_12factor'
 end
 
-gem "simplecov", "~> 0.21.2"
-
 gem "factory_girl", "~> 4.9"
 
 gem "factory_girl_rails", "~> 4.9"
+
+
+group :test do
+  gem 'cucumber-rails', :require => false
+  gem 'cucumber-rails-training-wheels'
+  gem 'simplecov', :require => false
+end
+gem "database_cleaner", "~> 1.99"
