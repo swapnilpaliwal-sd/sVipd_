@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 RSpec.describe Company, :type => :model do
-    subject { described_class.new }
+    subject { described_class.new } # creates an ActiveRecord for Company with all nil fields
     describe 'location' do
         it "takes a user id and returns distance to merchants" do
             distances = Company.company_to_user_by_distance(5)
