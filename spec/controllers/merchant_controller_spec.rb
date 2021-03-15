@@ -27,10 +27,10 @@ RSpec.describe MerchantController, :type => :controller do
       expect(response).to render_template("stories")
     end
   end  
-  it "renders the merchant landing page" do
-    post :index
-    expect(response).to render_template("index")
-  end 
+  # it "renders the merchant landing page" do
+  # post :index
+  # expect(response).to render_template("index")
+  # end 
   
 end
  
