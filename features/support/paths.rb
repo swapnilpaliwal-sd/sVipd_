@@ -24,6 +24,8 @@ module NavigationHelpers
       edit_movie_path(Movie.find_by_title($1))
     when /^the products page$/ then
       products_path
+    when /^the companies page$/ then
+      companies_path
     when /^the details page for "(.*)"$/ then
     when /^the Similar Movies page for "(.*)"$/ then
       movies_path()
