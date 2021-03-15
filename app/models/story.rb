@@ -3,4 +3,5 @@ class Story < ActiveRecord::Base
   self.primary_key = "id"
   validates :description, presence: true
   validates :title, presence: true
+  validates :company_id, presence: true
 end
