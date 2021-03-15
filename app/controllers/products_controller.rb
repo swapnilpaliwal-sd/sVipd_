@@ -63,7 +63,7 @@ class ProductsController < ApplicationController
   def update
     begin
       @product = Product.find params[:id]
-      @product.update_attributes!(product_params)
+      @product.update(product_params)
       flash[:notice] = "#{@product.name} was successfully updated."
       redirect_to product_path(@product)
     rescue => err
