@@ -1,5 +1,4 @@
-require 'spec_helper'
-
+require 'rails_helper'
 RSpec.describe Story, :type => :model do
     subject { described_class.new } # creates an ActiveRecord for Story with all nil fields
     it "is valid with valid attributes" do
