@@ -8,4 +8,5 @@ echo "======================================="
 echo "=========     Step 2 of 2     ========="
 echo "=========  Running Cucumber   ========="
 echo "======================================="
+rake db:test:prepare
 rake cucumber

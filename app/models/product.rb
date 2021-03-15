@@ -13,8 +13,6 @@ class Product < ActiveRecord::Base
     products.each do |p|
       if comp_dist[p.company.company_id].nil? == false
         prod_to_dist[p.pid] = comp_dist[p.company.company_id].round(2)
-      else
-        prod_to_dist[p.pid] = "Unknown"
       end
     end
     prod_to_dist

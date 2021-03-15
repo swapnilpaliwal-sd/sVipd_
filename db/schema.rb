@@ -13,13 +13,27 @@
 
 ActiveRecord::Schema.define(version: 20150809022253) do
 
-  create_table "movies", force: :cascade do |t|
+  create_table "products", force: :cascade, :id => false do |t|
+    t.integer "pid", :primary_key => true
+    t.string   "name"
+    t.text   "description"
+    t.integer "price"
+    t.integer "stock_count"
+    t.integer "company_id"
+  end
+  create_table "companies", force: :cascade, :id => false do |t|
+    t.integer "company_id", :primary_key => true
+    t.string   "name"
+    t.text   "description"
+    t.string "address"
+    t.string "image_url"
+  end
+  # id is here implicitly
+  create_table "stories", force: :cascade do |t|
+    t.integer   "company_id"
     t.string   "title"
-    t.string   "rating"
-    t.text     "description"
-    t.datetime "release_date"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.text "description"
+    t.string   "image"
   end
 
 end
