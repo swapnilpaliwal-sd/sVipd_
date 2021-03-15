@@ -55,6 +55,6 @@ Scenario: Viewing my story
    And I press "Login"
    And I follow "Stories"
    And I follow "BROOKS BROTHERS OFFER"
-   Then I should see "Your Story"
+   Then I should see "BROOKS BROTHERS OFFER"
 
    # Deleting story may be difficult with image... Idk how to do it right now
