@@ -1,3 +1,5 @@
+<%= render "common/header_merchant" %>
+<div class="container">
 <h2>Products</h2>
 
 <%= form_tag products_path, method: :get, id: 'search' do %>
@@ -30,3 +32,4 @@
   </tbody>
 </table>
 <%= link_to 'Add new product', new_product_path, :class => 'btn btn-primary' %>
+</div>

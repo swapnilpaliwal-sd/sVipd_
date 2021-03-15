@@ -1,6 +1,7 @@
 class MerchantController < ApplicationController
 
   def index
+    @company = Company.find(session[:merchant_id])
   end
 
   def stories
