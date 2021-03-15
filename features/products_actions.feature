@@ -16,7 +16,7 @@ Background: products and companies in database
 
 Scenario: View products
   When I go to the products page
-  Then I should see "roducts"
+  Then I should see "Search Result"
   And I should see "Star Wars"
 
 Scenario: View a product

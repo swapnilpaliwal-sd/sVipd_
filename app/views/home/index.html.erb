@@ -2,40 +2,15 @@
 <%= stylesheet_link_tag "application" %>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 
-<script>
-    $(document).ready(function() {
-        <% @stories.each do |story| %>
-        $("#myBtn<%= story.id %>").click(function() {
-            $("#img-rotate<%= story.id %>").removeClass("img-rotate");
-            $("#img-rotate<%= story.id %>").addClass("img-rotate_a");
-            setTimeout(function() {
-                $('#Modal<%= story.id %>').modal('hide');
-            }, 4030);
-        });
-        <% end %>
-    });
-</script>
+
 
 
 <%= render "common/header" %>
 <%= render "stories/bar" %>
 
-<section id = "Search">
-  <div class = "container-fluid" style = "margin-top:1%;">
-    <div class = "pad-action" style = "margin-top:10px;margin-left:5.1%;">
-      <h1><b></b></h1>
-    </div>
-    <div class = "row pad-action pad-left-more" style = "margin-left: 160px;">
-      <div class = "col-10" style = "padding-right:6%;">
-        <div class="input-group">
-          <input type="text" placeholder="Search for a product, or enter product barcode" style = "font-size:28px;font-weight:100;border-top-left-radius: 20px;border-bottom-left-radius: 20px;box-shadow:none;outline:none;border: 1px solid #c4c4c4; border-right: 0px solid; background-color: #fff" class="form-control">
-          <span class="input-group-text" style = "border-top-right-radius: 20px; border-bottom-right-radius: 20px; background-color:#fff; border-left:0px solid;"><i class="fas fa-search-location fa-3x" style = "color:#000; margin:10px;"></i></span>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</section>
+<%= form_tag products_path, method: :get, id: 'search', :class => 'form' do %>
+<%= render "products/search" %>
+<% end %>
 
 <%= render "home/features" %>
 <br />

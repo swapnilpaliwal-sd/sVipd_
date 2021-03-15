@@ -1,3 +1,5 @@
+<%= render "common/header_merchant" %>
+<div class="container">
 <h2>Add a Product!</h2>
 
 <%= form_tag products_path, :class => 'form' do %>
@@ -13,3 +15,4 @@
   <%= submit_tag 'Add Product', :class => 'btn btn-primary' %>
   <%= link_to 'Cancel', products_path, :class => 'btn btn-secondary' %>
 <% end %>
+</div>

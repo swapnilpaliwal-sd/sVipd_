@@ -116,12 +116,13 @@
 
 </style>
 
-<div>
-  <h3>Your Story</h3>
-</div>
+<%= render "common/header_merchant" %>
+<br><br><br><br><br><br><br>
+
+<div class="container">
+  <h3><%= @story.title %></h3>
 <div style = "display:inline-block; margin-right: 40px;" id = "myBtn<%= @story.id %>" data-bs-toggle="modal" data-bs-target="#Modal<%= @story.id %>">
   <div class="justify-center" style = "width:110px;">
-
     <div class = "image" style = "padding: 10px;">
       <img style = "width:110px; background-color:#fff; border-radius: 150px;" class="img-merchant" src="<%= @story.company.image_url %>" alt="Merchant CTown">
     </div>
@@ -171,4 +172,5 @@
 
     </div>
   </div>
+</div>
 </div>

@@ -35,7 +35,7 @@ class CompaniesController < ApplicationController
   def update
     begin
       @company = Company.find params[:id]
-      @company.update_attributes!(company_params)
+      @company.update(company_params)
       flash[:notice] = "#{@company.name} was successfully updated."
       redirect_to company_path(@company)
     rescue => err
