@@ -11,7 +11,9 @@ class ProductsController < ApplicationController
     @products = Product.all
     if search != nil
       s = search["search"]
-      @products = Product.where("name LIKE '%#{s}%' OR description LIKE '%#{s}%' ").order(:price)
+      if s.nil? == false
+        @products = Product.where("LOWER (name) LIKE ?  OR LOWER( description ) LIKE ? ", "%#{s.downcase}%", "%#{s.downcase}%").order(:price)
+      end
     end
     @distances = Product.get_all_distances(@products)
     @product_list = []
