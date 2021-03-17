@@ -1,5 +1,9 @@
 # sVipd ASE Project
 
+Azhaan Zahabee - az2641
+Harjot Singh - hs3263
+James Mastran - jam2454
+Swapnil Paliwal - sp3911
 
 Testing Suite:
  - We have implemented tests in RSpec with about 85+% code coverage
