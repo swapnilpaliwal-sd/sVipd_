@@ -17,10 +17,10 @@ class ProductsController < ApplicationController
     end
     loc = request.location.address
     puts "--------------------------------"
-    puts "CITY::: #{loc.address}"
+    puts "CITY::: #{loc}"
     puts "--------------------------------"
     puts "--------------------------------"
-    puts "CITY::: #{loc.address}"
+    puts "CITY::: #{loc}"
     puts "--------------------------------"
     @distances = Product.get_all_distances(@products, loc)
     @product_list = []
