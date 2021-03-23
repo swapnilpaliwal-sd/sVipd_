@@ -6,7 +6,6 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :price, presence: true
 
-  
   def self.get_all_distances(products)
     comp_dist = Company.company_to_current_user_by_distance()
     prod_to_dist = Hash.new
