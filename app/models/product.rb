@@ -52,7 +52,7 @@ class Product < ActiveRecord::Base
       if comp_dist[p.company.company_id].nil? == false
         p.distance = comp_dist[p.company.company_id].round(2)
       else
-        p.distance = -1
+        p.distance = 10000000000
       end
     end
     products

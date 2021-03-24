@@ -12,6 +12,56 @@ RSpec.describe Product, :type => :model do
         end
     end
 
+    
+    describe 'location sort asc' do
+        it "takes a list of products and returns distance to each" do
+            products = Product.all
+            Product.generate_distances(products, "4200 Fifth Ave, Pittsburgh, PA 15260")
+            products = Product.order_by_dist(products, true)
+            last = -1000
+            products.each do |p|
+                expect(p.distance).to be >= last
+                last = p.distance
+            end
+        end
+    end
+    
+    describe 'location sort desc' do
+        it "takes a list of products and returns distance to each" do
+            products = Product.all
+            Product.generate_distances(products, "4200 Fifth Ave, Pittsburgh, PA 15260")
+            products = Product.order_by_dist(products, false)
+            last = 1000000000000
+            products.each do |p|
+                expect(p.distance).to be <= last
+                last = p.distance
+            end
+        end
+    end
+
+    describe 'price sort desc' do
+        it "takes a list of products and returns distance to each" do
+            products = Product.all
+            products = Product.order_by_price(products, false)
+            last = 1000000000000
+            products.each do |p|
+                expect(p.price).to be <= last
+                last = p.price
+            end
+        end
+    end
+
+    describe 'price sort asc' do
+        it "takes a list of products and returns distance to each" do
+            products = Product.all
+            products = Product.order_by_price(products, true)
+            last = -1000
+            products.each do |p|
+                expect(p.price).to be >= last
+                last = p.price
+            end
+        end
+    end
 
     subject { described_class.new } # creates an ActiveRecord for Story with all nil fields
     it "is valid with valid attributes" do
