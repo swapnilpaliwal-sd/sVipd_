@@ -7,14 +7,13 @@ class ProductsController < ApplicationController
   end
 
   def index
-    search = params[:search]
     @products = Product.all
+
+    search = params[:search]
     if search != nil
-      s = search["search"]
-      if s.nil? == false
-        @products = Product.where("LOWER (name) LIKE ?  OR LOWER( description ) LIKE ? ", "%#{s.downcase}%", "%#{s.downcase}%").order(:price)
-      end
+      @products = Product.case_insensitive_search(@products, search["search"]).order(:price)
     end
+
     @distances = Product.get_all_distances(@products, request.location.address)
     @product_list = []
     four_products = []
