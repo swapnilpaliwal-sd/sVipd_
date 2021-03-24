@@ -5,7 +5,7 @@ RSpec.describe Product, :type => :model do
     describe 'location' do
         it "takes a list of products and returns distance to each" do
             products = Product.all
-            distances = Product.get_all_distances(products)
+            distances = Product.get_all_distances(products, nil)
             expect(distances).to be_an_instance_of(Hash)
         end
     end
