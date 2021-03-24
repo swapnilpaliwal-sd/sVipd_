@@ -16,7 +16,9 @@ class ProductsController < ApplicationController
 
     # Generate distances into @products and order
     @products = Product.order_by_price(@products, true) #sort by asc price -> must go before generate dist
-    Product.generate_distances(@products, request.location.address)
+    if request.nil? == false and request.location.nil? == false
+       Product.generate_distances(@products, request.location.address)
+    end
     @products = Product.order_by_dist(@products, true) #sort by asc dist -> must go after generate dist
 
     @product_list = []
