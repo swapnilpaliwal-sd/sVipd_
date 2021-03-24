@@ -11,10 +11,13 @@ class ProductsController < ApplicationController
 
     search = params[:search]
     if search != nil
-      @products = Product.case_insensitive_search(@products, search["search"]).order(:price)
+      @products = Product.case_insensitive_search(@products, search["search"])
     end
 
-    @distances = Product.get_all_distances(@products, request.location.address)
+    # Generate distances into @products and order
+    Product.generate_distances(@products, request.location.address)
+    @products = Product.order_by_price(@products, true) #sort by asc price
+
     @product_list = []
     four_products = []
     counter = 0
@@ -30,6 +33,7 @@ class ProductsController < ApplicationController
     unless four_products.empty?
       @product_list.push(four_products)
     end
+    
   end
 
  # def initialize
