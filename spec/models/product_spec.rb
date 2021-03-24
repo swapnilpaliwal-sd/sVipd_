@@ -5,8 +5,10 @@ RSpec.describe Product, :type => :model do
     describe 'location' do
         it "takes a list of products and returns distance to each" do
             products = Product.all
-            distances = Product.get_all_distances(products, nil)
-            expect(distances).to be_an_instance_of(Hash)
+            Product.generate_distances(products, "4200 Fifth Ave, Pittsburgh, PA 15260")
+            products.each do |p|
+                expect(p.distance.nil?).to be false
+            end
         end
     end
 

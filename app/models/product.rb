@@ -48,7 +48,6 @@ class Product < ActiveRecord::Base
 
   def self.generate_distances(products, loc)
     comp_dist = Company.company_to_current_user_by_distance(loc)
-    prod_to_dist = Hash.new
     products.each do |p|
       if comp_dist[p.company.company_id].nil? == false
         p.distance = comp_dist[p.company.company_id].round(2)
