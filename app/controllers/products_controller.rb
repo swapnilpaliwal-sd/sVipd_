@@ -7,15 +7,18 @@ class ProductsController < ApplicationController
   end
 
   def index
-    search = params[:search]
     @products = Product.all
+
+    search = params[:search]
     if search != nil
-      s = search["search"]
-      if s.nil? == false
-        @products = Product.where("LOWER (name) LIKE ?  OR LOWER( description ) LIKE ? ", "%#{s.downcase}%", "%#{s.downcase}%").order(:price)
-      end
+      @products = Product.case_insensitive_search(@products, search["search"])
     end
-    @distances = Product.get_all_distances(@products)
+
+    # Generate distances into @products and order
+    @products = Product.order_by_price(@products, true) #sort by asc price -> must go before generate dist
+    Product.generate_distances(@products, request.location.address)
+    @products = Product.order_by_dist(@products, true) #sort by asc dist -> must go after generate dist
+
     @product_list = []
     four_products = []
     counter = 0
@@ -31,6 +34,7 @@ class ProductsController < ApplicationController
     unless four_products.empty?
       @product_list.push(four_products)
     end
+    
   end
 
  # def initialize

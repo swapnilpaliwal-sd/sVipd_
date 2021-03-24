@@ -4,7 +4,7 @@ RSpec.describe Company, :type => :model do
 
     describe 'location' do
         it "returns a hash of distances to all merchants from current user" do
-            distances = Company.company_to_current_user_by_distance()
+            distances = Company.company_to_current_user_by_distance(nil)
             expect(distances).to be_an_instance_of(Hash)
         end
     end
