@@ -18,7 +18,7 @@ class ProductsController < ApplicationController
     if session[:location].nil?
       session[:location] = request.location.address
     end
-    @products = Product.gen_dist_and_order(@products, session[:location], "dist", true)
+    @products = Product.gen_dist_and_order(@products, session[:location], "dist-price", true) # sort by distance and price in ASC
 
     @product_list = []
     four_products = []
