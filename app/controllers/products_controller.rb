@@ -15,7 +15,10 @@ class ProductsController < ApplicationController
     end
 
     # Generate distances into @products and order
-    @products = Product.gen_dist_and_order(@products, request.location.address, "dist", true)
+    if session[:location].nil?
+      session[:location] = request.location.address
+    end
+    @products = Product.gen_dist_and_order(@products, session[:location], "dist", true)
 
     @product_list = []
     four_products = []
