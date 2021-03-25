@@ -23,7 +23,11 @@ class ProductsController < ApplicationController
     @product_list = []
     four_products = []
     counter = 0
+    dist_lim = 100000000000000
     @products.each do |product|
+      if product.distance > dist_lim
+        next
+      end
       counter = counter % 4
       four_products.push(product)
       if counter == 3
