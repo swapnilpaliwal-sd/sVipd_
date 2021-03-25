@@ -27,6 +27,17 @@ class Product < ActiveRecord::Base
     searched_products
   end
 
+  def self.gen_dist_and_order(products, loc, type, asc)
+    if type == "price"
+      products = Product.order_by_price(products, asc) #sort by asc price -> must go before generate dist
+    end
+    Product.generate_distances(products, request.location.address)
+    if type == "dist"
+      products = Product.order_by_dist(products, asc) #sort by asc dist -> must go after generate dist
+    end
+    products
+  end
+
   def self.order_by_price(products, asc)
     if asc == true
       searched_products = products.order(price: :asc)

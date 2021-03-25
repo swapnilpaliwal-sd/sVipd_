@@ -56,3 +56,5 @@ end
 gem "database_cleaner", "~> 1.99"
 
 gem "geocoder", "~> 1.6"
+
+gem "geocode", "~> 0.2.1"
