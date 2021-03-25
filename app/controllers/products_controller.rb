@@ -15,11 +15,10 @@ class ProductsController < ApplicationController
     end
 
     # Generate distances into @products and order
-    @products = Product.order_by_price(@products, true) #sort by asc price -> must go before generate dist
-    if request.nil? == false and request.location.nil? == false
-       Product.generate_distances(@products, request.location.address)
+    if session[:location].nil?
+      session[:location] = request.location.address
     end
-    @products = Product.order_by_dist(@products, true) #sort by asc dist -> must go after generate dist
+    @products = Product.gen_dist_and_order(@products, session[:location], "dist", true)
 
     @product_list = []
     four_products = []
