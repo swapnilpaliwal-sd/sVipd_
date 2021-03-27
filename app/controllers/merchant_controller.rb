@@ -9,7 +9,7 @@ class MerchantController < ApplicationController
     if Story.where(company_id: session[:merchant_id]).all.nil?
 
       #Unsure here
-      @stories = Story.where(company_id: 1).all
+      @stories = nil
     else
       @stories = Story.where(company_id: session[:merchant_id]).all
     end
