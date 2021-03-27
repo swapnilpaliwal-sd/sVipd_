@@ -1,6 +1,14 @@
+<style>
+
+.product_image {
+  height: 100px;
+}
+
+</style>
+
 <%= render "common/header_merchant" %>
 <div class="container">
-<h2>Products</h2>
+<h2>Products </h2>
 
 <%= form_tag products_path, method: :get, id: 'search' do %>
   Search Products:
@@ -11,25 +19,28 @@
 <table class="table table-striped col-md-12" id="products">
   <thead>
   <th>
-  <td>Name</td>
-  <td>Description</td>
-  <td>Price</td>
-  <td>Stock Units Avail.</td>
-  <td>Company</td>
+  Sort:
+  <td><%= sorting_login_table "name" %></td>
+  <td><%= sorting_login_table "description" %></td>
+  <td><%= sorting_login_table "price" %></td>
+  <td><%= sorting_login_table "stock_count"%></td>
   </th>
   </thead>
   <tbody>
   <% @products.each do |product| %>
     <tr>
-      <td><%= product.pid %></td>
+      <td>
+        <img src = "<%= product.image_url %>" class = "product_image"/>
+        </td>
       <td><%= link_to product.name, product_path(product.pid) %></td>
       <td><%= product.description %></td>
       <td>$<%= product.price %></td>
       <td><%= product.stock_count %></td>
-      <td><%= link_to product.company.name, company_path(product.company_id) %></td>
+      <!--<td><%= link_to product.company.name, company_path(product.company_id) %></td>-->
     </tr>
   <% end %>
   </tbody>
 </table>
+
 <%= link_to 'Add new product', new_product_path, :class => 'btn btn-primary' %>
 </div>

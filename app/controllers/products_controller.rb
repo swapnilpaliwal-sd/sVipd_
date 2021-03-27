@@ -39,11 +39,11 @@ class ProductsController < ApplicationController
     unless four_products.empty?
       @product_list.push(four_products)
     end
-    
+
   end
 
  # def initialize
-    
+
  # end
 
   def new
@@ -90,8 +90,10 @@ class ProductsController < ApplicationController
     redirect_to products_by_company_id_path
   end
 
+
+  helper_method :initial_sorting_merchant_login, :direction_asc
   def merchant_index
-    @products = Product.where(company_id: session[:merchant_id]).all
+    @products = Product.where(company_id: session[:merchant_id]).order(initial_sorting_merchant_login + " " + direction_asc)
   end
 
   private
@@ -99,5 +101,13 @@ class ProductsController < ApplicationController
   # This helps make clear which methods respond to requests, and which ones do not.
   def product_params
     params.require(:product).permit(:name, :description, :price, :stock_count, :company_id)
+  end
+
+  def initial_sorting_merchant_login
+    params[:sort] || "name"
+  end
+
+  def direction_asc
+    params[:direction] || "asc"
   end
 end

@@ -7,6 +7,9 @@ class Product < ActiveRecord::Base
   validates :name, presence: true
   validates :price, presence: true
 
+
+  
+
   def self.search_by_companyid(products, cid, search)
     searched_products = products.where("company_id = ?", cid)
     searched_products = self.case_insensitive_search(searched_products, search)
