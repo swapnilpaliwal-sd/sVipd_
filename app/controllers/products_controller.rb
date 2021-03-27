@@ -94,6 +94,8 @@ class ProductsController < ApplicationController
   helper_method :initial_sorting_merchant_login, :direction_asc
   def merchant_index
     @products = Product.where(company_id: session[:merchant_id]).order(initial_sorting_merchant_login + " " + direction_asc)
+    @number = Product.where(company_id: session[:merchant_id]).count
+    
   end
 
   private

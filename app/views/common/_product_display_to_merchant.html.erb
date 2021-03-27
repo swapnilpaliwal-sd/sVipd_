@@ -1,0 +1,66 @@
+<br />
+  <div class = "row" >
+    <div class = "col-2" style = "text-align: center;">
+
+      Sort:
+
+    </div>
+    <div class = "col-2" style = "text-align: center;">
+      <%= sorting_login_table "name",class: "sort_optn"%>
+    </div>
+
+    <div class = "col-4" style = "text-align: center;">
+      <%= sorting_login_table "description" %>
+    </div>
+
+    <div class = "col-2" style = "text-align: center;">
+      <%= sorting_login_table "price" %>
+    </div>
+
+    <div class = "col-2" style = "text-align: center;">
+      <%= sorting_login_table "stock_count"%>
+    </div>
+
+  </div>
+
+<br />
+
+
+
+  <% @products.each do |product| %>
+
+
+
+         <div class = "row">
+
+           <div class = "col-2"  style = "text-align: center;">
+             <img src = "<%= product.image_url %>" class = "product_image"/>
+           </div>
+
+           <div class = "col-2"  style = "text-align: center;">
+             <span><%=product.name%></span><br /><a class = "btn btn-toggle-colors" href = "<%= product_path(product.pid) %>">Edit</a>
+           </div>
+
+           <div class = "col-4">
+             <p class="text-justify" style = "text-align: justify; text-justify: inter-word;">
+               <%= product.description %>
+               </p>
+           </div>
+
+           <div class = "col-2"  style = "text-align: center;">
+             $<%= product.price %>
+           </div>
+
+           <div class = "col-2"  style = "text-align: center;">
+             <%= product.stock_count %>
+           </div>
+         </div>
+
+
+
+
+      <!--<td><%= link_to product.company.name, company_path(product.company_id) %></td>-->
+    <br />
+  <% end %>
+
+  <br />

@@ -2,16 +2,189 @@
 <%= stylesheet_link_tag "application" %>
 
 <%= render "common/header_merchant" %>
+<style>
+
+.div-col-l {
+
+  background: rgb(242,201,76);
+  background: -webkit-linear-gradient(40deg, rgba(242,201,76,1) 0%, rgba(242,201,76,1) 43%, rgba(242,153,74,1) 100%, rgba(76,225,242,0.33967090254070376) 100%);
+  background: -o-linear-gradient(40deg, rgba(242,201,76,1) 0%, rgba(242,201,76,1) 43%, rgba(242,153,74,1) 100%, rgba(76,225,242,0.33967090254070376) 100%);
+  background: linear-gradient(130deg, rgba(242,201,76,1) 0%, rgba(242,201,76,1) 43%, rgba(242,153,74,1) 100%, rgba(76,225,242,0.33967090254070376) 100%);
+  border: 4px solid #333;
+  border-radius: 10px;
+  filter: drop-shadow(5px 5px 4px #333);
+
+
+}
+
+.div-col-2 {
+  filter: drop-shadow(5px 5px 4px #333);
+  border: 4px solid #333;
+  border-radius: 10px;
+  background: rgb(111,207,151);
+  background: -webkit-linear-gradient(40deg, rgba(111,207,151,1) 0%, rgba(111,207,151,1) 47%, rgba(86,204,242,1) 100%, rgba(76,225,242,0.33967090254070376) 100%);
+  background: -o-linear-gradient(40deg, rgba(111,207,151,1) 0%, rgba(111,207,151,1) 47%, rgba(86,204,242,1) 100%, rgba(76,225,242,0.33967090254070376) 100%);
+  background: linear-gradient(130deg, rgba(111,207,151,1) 0%, rgba(111,207,151,1) 47%, rgba(86,204,242,1) 100%, rgba(76,225,242,0.33967090254070376) 100%);
+}
+.product_image {
+  height: 120px;
+  border-radius: 100px;
+  width: 120px;
+  object-fit: cover;
+  border: 2px solid black;
+
+}
+
+.btn-toggle-colors {
+  background-color: #000000;
+  color: #fff;
+  margin-top:20px;
+  width: 100px;
+  font-weight: bold;
+  filter: drop-shadow(1px 1px 1px #333);
+}
+
+
+.table-striped > tbody > tr:nth-child(2n+1) > td {
+  background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(240,183,160,1) 0%, rgba(76,225,242,1) 0%, rgba(76,225,242,0.33967090254070376) 100%);
+   font-weight: normal;
+
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td {
+  background-color: #333333;
+  font-weight: normal;
+   color: white;
+
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td .product_image {
+   border: 2px solid #F2C94C;
+
+}
+
+.table-striped > tbody > tr:nth-child(2n) > td .btn-toggle-colors {
+   border: 2px solid #F2C94C;
+   background-color: #F2C94C;
+   color: #fff;
+   font-color: #fff;
+}
+
+.sort_optn {
+  color: black;
+  text-decoration: none;
+}
+</style>
+
 
 <div class = "container-fluid">
   <div class = "row">
     <div class = "pad-action pad-left">
-      <h3><b><%= @company.name %></b></h3>
+      <h3>Welcome, <strong><%= @company.name %></strong></h3>
     </div>
   </div>
+<div class = "pad-left">
+  <div class = "row">
+      <div class = "div-col-l col-7" style = "margin-right: 40px;">
+
+          <div class = "row">
+
+            <div class = "col-6" style = "margin-bottom: 50px;margin-top: 50px;">
+              <img src = "https://i.ibb.co/t48cZ54/noto-v1-statue-of-liberty.png"  />
+            </div>
+
+            <div class = "col-6" style = "margin-top:150px;">
+              <h1>Product count: <%= @product_count %></h1>
+              <h1></h1>
+            </div>
+          </div>
+
+      </div>
+      <div class = "div-col-2 col-4">
+          <div class = "row">
+            <div class = "col-6" style = "margin-bottom: 50px;margin-top: 50px;">
+              <img src = "https://i.ibb.co/qxHPB04/emojione-money-bag.png"  />
+            </div>
+
+            <div class = "col-6" style = "margin-top:150px;">
+              <h1>Story: Yes</h1>
+              <h1></h1>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+
   <div class = "row">
     <div class = "pad-action pad-left">
-      <h3><b>Start Browsing your Stories and Products!</b></h3>
+
+      <h3 style = "font-weight: bold;">Stories</h3>
+
+
+
+
+        <div class = "row">
+          <div class = "col-6">
+            <% @stories.each do |story| %>
+            <img style = "width:100px; background-color:#fff; border-radius: 150px; border: 1px solid black; display: inline-block; min-height: 150px;min-width:150px;" class="img-merchant" src="<%= story.company.image_url %>" alt="">
+              <h3 style = "display: inline-block; font-weight: bold; font-size:16px;"><%= story.title %> <a href = "<%= story_path(story.id) %>" style = "color: #000;background-color:#F2C94C;display: inline-block;" class = "btn">
+                See More
+                </a></h3>
+              <center>
+
+              </center>
+            <% end %>
+
+          </div>
+
+          <div class = "col-6">
+
+            <div class = "row">
+
+              <div class = "col-6" style = "margin-right:25px;">
+
+              </div>
+
+              <div class = "col-4" style = "background-color:#333;padding:10px; border-radius: 10px;margin-top:20px;filter: drop-shadow(5px 5px 4px #333);">
+                <center style = "margin-top:20px;">
+                  <p style = "color:#F2C94C; font-weight: bold;">Total active alerts: <%= @story_count %></p>
+                  </center>
+              </div>
+
+
+
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+
+
     </div>
+
   </div>
+
+
+
+  <div class = "row">
+    <div class = "pad-action pad-left">
+
+      <h3 style = "font-weight: bold;">Your Products</h3>
+      <div class="container">
+
+
+      <%= render "common/product_display_to_merchant" %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
 </div>
